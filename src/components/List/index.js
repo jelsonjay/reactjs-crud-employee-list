@@ -5,7 +5,7 @@ import styled from 'styled-components'
 
 const List = () => {
 
-const {users}  = useContext(GlobalContext)
+const {users, deleteUser}  = useContext(GlobalContext)
 
 console.log(users)
 
@@ -17,7 +17,7 @@ console.log(users)
         <strong>{item.fname}</strong>
         <div>
         <Link to={`/edit/${item.id}`}>Edit</Link>
-        <DeleteButton>Delete</DeleteButton>
+        <DeleteButton onClick={() => deleteUser(item.id)}>Delete</DeleteButton>
         </div>
         </LisGroupItem>
       )
