@@ -11,7 +11,9 @@ console.log(users)
 
   return (
     <ListGroup>
-    {users.map((item) => {
+    {users.length > 0 ? (
+    <>
+        {users.map((item) => {
       return(
         <LisGroupItem key={item.id}>
         <strong>{item.fname}</strong>
@@ -22,6 +24,8 @@ console.log(users)
         </LisGroupItem>
       )
     })}
+    </>) : (<Text>No Employee Added</Text>)}
+
 
     </ListGroup>
   )
@@ -32,8 +36,14 @@ export default List
 const ListGroup = styled.div`
 max-width:1100px;
 margin: 0 auto;
-
 `
+
+const Text = styled.h3`
+text-align:center;
+font-size:3rem;
+color: orange;
+`
+
 const LisGroupItem = styled.div`
 margin-bottom: 20px;
 background: hsl(185, 94%, 87%);
