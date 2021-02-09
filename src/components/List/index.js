@@ -1,24 +1,28 @@
-import React from 'react'
+import React,{useContext} from 'react'
+import {GlobalContext} from '../Context/GlobalState'
 import  {Link} from 'react-router-dom'
 import styled from 'styled-components'
 
 const List = () => {
+
+const {users}  = useContext(GlobalContext)
+
+console.log(users)
+
   return (
     <ListGroup>
-    <LisGroupItem>
-    <strong>Employee one</strong>
-    <div>
-    <Link to='/edit/1'>Edit</Link>
-    <DeleteButton>Delete</DeleteButton>
-    </div>
-    </LisGroupItem>
-    <LisGroupItem>
-    <strong>Employee one</strong>
-    <div>
-    <Link to='/edit/1'>Edit</Link>
-    <DeleteButton>Delete</DeleteButton>
-    </div>
-    </LisGroupItem>
+    {users.map((item) => {
+      return(
+        <LisGroupItem key={item.id}>
+        <strong>{item.fname}</strong>
+        <div>
+        <Link to={`/edit/${item.id}`}>Edit</Link>
+        <DeleteButton>Delete</DeleteButton>
+        </div>
+        </LisGroupItem>
+      )
+    })}
+
     </ListGroup>
   )
 }
